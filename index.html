@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Art of Being Known on Substack — Lucinda Rae</title>
+<meta name="description" content="Build the platform that shows the depth of your work and turns readers into clients. 4 weeks. 8 live sessions. Starts June 17.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --burg:        #4A0820;
+  --burg-mid:    #6B1A2E;
+  --burg-deep:   #2D0512;
+  --hot:         #D4356A;
+  --hot-glow:    #FF4D8A;
+  --gold:        #C9952A;
+  --gold-foil:   #E8C46A;
+  --gold-pale:   #F5E6C8;
+  --gold-deep:   #8A6318;
+  --cream:       #FDF8F0;
+  --cream-warm:  #F7EFE0;
+  --indigo:      #6B45C8;
+  --indigo-glow: #9B7EF0;
+  --dark:        #1A040E;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--dark);color:var(--cream);overflow-x:hidden;max-width:100%;position:relative;}
+img{max-width:100%;display:block;}
+
+/* BUTTONS */
+.btn-gold{
+  display:inline-block;padding:18px 48px;
+  background:linear-gradient(135deg,#F5E6C8 0%,#E8C46A 20%,#C9952A 45%,#E8C46A 65%,#A07820 80%,#C9952A 100%);
+  background-size:200% 200%;animation:foilShimmer 4s ease infinite;
+  color:var(--burg-deep);font-family:'Jost',sans-serif;font-weight:600;font-size:.9rem;
+  letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border-radius:1px;
+  border:none;cursor:pointer;
+  box-shadow:0 4px 30px rgba(201,149,42,.4),0 0 60px rgba(201,149,42,.15);
+  transition:transform .2s,box-shadow .2s;position:relative;
+}
+.btn-gold::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.3) 0%,transparent 50%,rgba(255,255,255,.1) 100%);border-radius:1px;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 50px rgba(201,149,42,.6),0 0 80px rgba(201,149,42,.2);}
+.btn-outline{display:inline-block;padding:15px 40px;background:transparent;color:var(--gold-foil);font-family:'Jost',sans-serif;font-weight:400;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(201,149,42,.5);border-radius:1px;transition:all .3s;}
+.btn-outline:hover{border-color:var(--gold-foil);background:rgba(201,149,42,.08);}
+
+@keyframes foilShimmer{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.1);opacity:.7;}}
+
+.eyebrow{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--hot);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:10px;font-family:'Jost',sans-serif;}
+.eyebrow::before,.eyebrow::after{content:'';display:inline-block;width:24px;height:1px;background:var(--hot);opacity:.6;}
+.gold-divider{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold-foil),transparent);margin:0 auto;}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;padding:60px 40px 80px;width:100%;}
+.hero-bg{position:absolute;inset:0;background-image:url('hero_bg.jpg');background-size:cover;background-position:center;z-index:0;}
+.hero-bg-overlay{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(212,53,106,.35) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 20% 80%,rgba(74,8,32,.8) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 80% 80%,rgba(74,8,32,.8) 0%,transparent 60%),linear-gradient(180deg,rgba(26,4,14,.4) 0%,rgba(26,4,14,.2) 40%,rgba(26,4,14,.85) 100%);z-index:1;}
+.hero-glow-1{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,60,130,.45) 0%,rgba(255,77,138,.2) 40%,transparent 70%);top:-150px;left:-150px;z-index:1;animation:pulse 6s ease infinite;}
+.hero-glow-2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,60,130,.35) 0%,transparent 70%);bottom:-80px;right:-120px;z-index:1;animation:pulse 8s ease 2s infinite;}
+.hero-glow-3{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,138,.3) 0%,transparent 70%);top:40%;left:50%;transform:translateX(-50%);z-index:1;animation:pulse 7s ease 1s infinite;}
+.hero-content{position:relative;z-index:2;max-width:860px;animation:fadeUp 1.2s ease both;}
+.hero-logo{width:clamp(280px,50vw,560px);margin:0 auto 1.5rem;filter:drop-shadow(0 0 40px rgba(201,149,42,.5));animation:fadeUp 1s ease .1s both;}
+.hero-tagline{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:300;font-style:italic;color:rgba(245,230,200,.9);line-height:1.7;margin-bottom:2.5rem;text-shadow:0 2px 20px rgba(0,0,0,.5);animation:fadeUp 1s ease .2s both;}
+.hero-stats{display:flex;justify-content:center;margin-bottom:3rem;animation:fadeUp 1s ease .3s both;}
+.hero-stat{text-align:center;padding:0 32px;border-right:1px solid rgba(201,149,42,.25);}
+.hero-stat:last-child{border-right:none;}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:600;color:var(--gold-foil);line-height:1;text-shadow:0 0 30px rgba(232,196,106,.5);}
+.hero-stat-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,230,200,.5);margin-top:6px;font-family:'Jost',sans-serif;}
+.hero-cta{display:flex;flex-direction:column;align-items:center;gap:14px;animation:fadeUp 1s ease .4s both;}
+.hero-fine{font-size:.72rem;color:rgba(245,230,200,.4);letter-spacing:.1em;font-family:'Jost',sans-serif;}
+
+/* PROOF BAR */
+.proof-bar{overflow:hidden;background:linear-gradient(135deg,var(--burg-deep) 0%,var(--burg-mid) 100%);border-top:1px solid rgba(232,196,106,.3);border-bottom:1px solid rgba(232,196,106,.3);padding:32px 60px;display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;position:relative;overflow:hidden;}
+.proof-bar::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(255,60,130,.2) 0%,transparent 70%);}
+.proof-icon{width:42px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(201,149,42,.5));}
+.proof-text{font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic;font-weight:300;color:var(--gold-pale);text-align:center;position:relative;z-index:1;}
+.proof-text strong{color:var(--gold-foil);font-style:normal;font-weight:600;}
+
+/* CREAM SECTION */
+.section-cream{background:var(--cream-warm);padding:100px 60px;position:relative;overflow:hidden;}
+.section-cream::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--hot),var(--gold-foil),var(--hot),transparent);}
+.section-cream::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--hot),var(--gold-foil),var(--hot),transparent);}
+.problem-inner{max-width:820px;margin:0 auto;text-align:center;}
+.problem-inner .eyebrow{color:var(--hot);justify-content:center;}
+.problem-inner .eyebrow::before,.problem-inner .eyebrow::after{background:var(--hot);}
+.problem-inner h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.3;color:var(--burg-deep);margin-bottom:2rem;}
+.problem-inner h2 em{color:var(--hot);font-style:italic;}
+.problem-inner p{font-size:1rem;line-height:1.85;color:#5A2030;margin-bottom:1.4rem;max-width:680px;margin-left:auto;margin-right:auto;}
+.problem-quote{margin-top:2.5rem;padding:36px 44px;border:1px solid rgba(201,149,42,.35);border-radius:2px;background:linear-gradient(135deg,rgba(74,8,32,.05) 0%,rgba(201,149,42,.05) 100%);position:relative;}
+.problem-quote::before{content:'\201C';position:absolute;top:-20px;left:30px;font-family:'Playfair Display',serif;font-size:5rem;color:var(--gold-foil);opacity:.4;line-height:1;}
+.problem-quote p{font-family:'Playfair Display',serif;font-size:1.4rem;font-style:italic;font-weight:300;color:var(--burg-deep);margin:0;}
+
+/* FOR WHO */
+.for-who{padding:100px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto;}
+.for-who-image{position:relative;}
+.for-who-image img{width:100%;height:680px;object-fit:cover;object-position:center top;border-radius:2px;}
+.for-who-image::before{content:'';position:absolute;inset:-8px;border:1px solid rgba(201,149,42,.25);border-radius:4px;z-index:-1;}
+.for-who-image::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(26,4,14,.4) 0%,transparent 40%),linear-gradient(to bottom,rgba(26,4,14,.2) 0%,transparent 30%);border-radius:2px;}
+.for-who-image-glow{position:absolute;inset:-60px;background:radial-gradient(ellipse,rgba(255,60,130,.45) 0%,rgba(212,53,106,.2) 40%,transparent 70%);z-index:-2;border-radius:50%;filter:blur(20px);}
+.for-who-content h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:300;color:var(--cream);line-height:1.3;margin-bottom:2rem;}
+.for-who-list{list-style:none;display:flex;flex-direction:column;gap:18px;margin-bottom:2.5rem;}
+.for-who-list li{display:flex;gap:14px;align-items:flex-start;font-size:1rem;color:rgba(253,248,240,.8);line-height:1.65;}
+.for-who-list li::before{content:'✦';color:var(--hot);font-size:.65rem;margin-top:7px;flex-shrink:0;}
+.not-for{padding:18px 22px;background:rgba(255,255,255,.03);border-left:2px solid rgba(212,53,106,.3);}
+.not-for p{font-size:.85rem;color:rgba(253,248,240,.45);line-height:1.7;font-style:italic;}
+
+/* CURRICULUM */
+.curriculum{overflow:hidden;width:100%;padding:100px 60px;background:linear-gradient(180deg,var(--dark) 0%,rgba(74,8,32,.3) 50%,var(--dark) 100%);position:relative;}
+.curriculum::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:80px;background:linear-gradient(to bottom,transparent,var(--gold-foil));}
+.curriculum::after{content:'';position:absolute;top:80px;left:50%;transform:translateX(-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(255,60,130,.18) 0%,rgba(255,77,138,.08) 40%,transparent 70%);pointer-events:none;z-index:0;filter:blur(10px);}
+.curriculum-header{text-align:center;max-width:720px;margin:0 auto 70px;}
+.curriculum-header h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--cream);line-height:1.3;margin-bottom:1rem;}
+.curriculum-header p{color:rgba(253,248,240,.55);font-size:1rem;line-height:1.7;}
+.weeks{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:16px;}
+.week-card{border:1px solid rgba(201,149,42,.12);border-radius:2px;overflow:hidden;transition:border-color .3s;background:rgba(255,255,255,.015);}
+.week-card:hover{border-color:rgba(201,149,42,.35);}
+.week-card.open{border-color:rgba(201,149,42,.3);background:rgba(74,8,32,.2);box-shadow:0 0 40px rgba(255,60,130,.08),inset 0 0 30px rgba(255,60,130,.04);}
+.week-header{display:grid;grid-template-columns:60px 1fr 30px;align-items:center;gap:20px;padding:26px 30px;cursor:pointer;transition:background .2s;}
+.week-header:hover{background:rgba(212,53,106,.05);}
+.week-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:300;color:rgba(201,149,42,.25);line-height:1;}
+.week-card.open .week-num{color:rgba(201,149,42,.55);}
+.week-eyebrow{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--hot);margin-bottom:5px;}
+.week-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:600;color:var(--gold-pale);line-height:1.2;}
+.week-sub{font-size:.78rem;color:rgba(253,248,240,.35);margin-top:3px;font-style:italic;}
+.week-arrow{color:var(--gold);font-size:1rem;transition:transform .3s;text-align:right;}
+.week-card.open .week-arrow{transform:rotate(180deg);}
+.week-body{padding:0 30px 26px;display:none;}
+.week-card.open .week-body{display:block;}
+.week-body p{font-size:.93rem;line-height:1.8;color:rgba(253,248,240,.68);margin-bottom:1.2rem;max-width:680px;}
+.tangibles{background:rgba(201,149,42,.06);border:1px solid rgba(201,149,42,.18);border-radius:2px;padding:14px 18px;}
+.tangibles-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-foil);margin-bottom:6px;}
+.tangibles p{font-size:.82rem;color:rgba(253,248,240,.55);margin:0;line-height:1.6;}
+.laser-bar{display:flex;align-items:center;gap:16px;padding:14px 30px;background:rgba(107,69,200,.07);border-top:1px solid rgba(107,69,200,.2);}
+.laser-bar span{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--indigo-glow);}
+.laser-bar::before,.laser-bar::after{content:'';flex:1;height:1px;background:rgba(107,69,200,.2);}
+
+/* HOW — CREAM */
+.how-cream{background:var(--cream);padding:100px 60px;position:relative;overflow:hidden;}
+.how-cream::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--gold-foil),transparent);}
+.how-cream-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.how-cream .eyebrow{color:var(--hot);justify-content:flex-start;}
+.how-cream .eyebrow::before,.how-cream .eyebrow::after{background:var(--hot);}
+.how-cream h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:300;color:var(--burg-deep);line-height:1.3;margin-bottom:2.5rem;}
+.how-list{list-style:none;display:flex;flex-direction:column;gap:22px;}
+.how-item{display:flex;gap:16px;align-items:flex-start;}
+.how-dot{width:8px;height:8px;border-radius:50%;background:var(--hot);margin-top:8px;flex-shrink:0;box-shadow:0 0 12px rgba(212,53,106,.6);}
+.how-item h4{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--burg-deep);margin-bottom:4px;}
+.how-item p{font-size:.9rem;color:#5A2030;line-height:1.65;}
+.how-image-wrap{position:relative;}
+.how-image-wrap img{width:100%;height:560px;object-fit:cover;object-position:top;border-radius:2px;}
+.how-image-wrap::before{content:'';position:absolute;inset:-10px;border:1px solid rgba(201,149,42,.3);border-radius:4px;z-index:-1;}
+.how-badge{position:absolute;bottom:-18px;right:-18px;background:linear-gradient(135deg,var(--burg-mid),var(--burg-deep));border:1px solid rgba(201,149,42,.4);padding:20px 26px;text-align:center;min-width:150px;}
+.how-badge-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:600;color:var(--gold-foil);line-height:1;}
+.how-badge-text{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(253,248,240,.4);margin-top:4px;}
+
+/* TESTIMONIALS */
+.testimonials{padding:100px 60px;background:var(--dark);position:relative;overflow:hidden;width:100%;}
+.testimonials::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(255,60,130,.22) 0%,rgba(212,53,106,.1) 50%,transparent 70%);pointer-events:none;filter:blur(15px);}
+.testimonials::after{content:'';position:absolute;bottom:-200px;right:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,138,.18) 0%,transparent 70%);pointer-events:none;filter:blur(20px);}
+.testimonials-header{text-align:center;margin-bottom:60px;}
+.testimonials-header h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:300;color:var(--cream);}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto;}
+.t-card{padding:32px;border:1px solid rgba(201,149,42,.12);border-radius:2px;background:rgba(74,8,32,.2);position:relative;transition:border-color .3s,transform .3s;}
+.t-card:hover{border-color:rgba(212,53,106,.3);transform:translateY(-4px);}
+.t-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,149,42,.5),transparent);}
+.t-stars{color:var(--gold-foil);font-size:.75rem;letter-spacing:3px;margin-bottom:14px;}
+.t-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;font-weight:300;color:var(--gold-pale);line-height:1.75;margin-bottom:18px;}
+.t-name{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(253,248,240,.35);}
+
+/* INVESTMENT */
+.investment{background:var(--cream-warm);padding:100px 60px;position:relative;overflow:hidden;}
+.investment::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--hot),var(--gold-foil),var(--hot),transparent);}
+.investment-inner{max-width:760px;margin:0 auto;text-align:center;}
+.investment .eyebrow{color:var(--hot);justify-content:center;}
+.investment .eyebrow::before,.investment .eyebrow::after{background:var(--hot);}
+.investment h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--burg-deep);line-height:1.3;margin-bottom:1rem;}
+.investment-lead{font-size:1rem;color:#5A2030;line-height:1.8;margin-bottom:3rem;}
+.inv-card{border:1px solid rgba(201,149,42,.4);border-radius:2px;padding:60px 60px 50px;background:linear-gradient(135deg,rgba(74,8,32,.06) 0%,rgba(245,230,200,.3) 100%);position:relative;overflow:hidden;margin-bottom:2rem;}
+.inv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold-foil),transparent);}
+.inv-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold-foil),transparent);}
+.price-main{font-family:'Playfair Display',serif;font-size:5.5rem;font-weight:300;color:var(--burg-mid);line-height:1;margin-bottom:6px;}
+.price-label{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(74,8,32,.4);margin-bottom:20px;}
+.price-or{font-size:.75rem;color:rgba(74,8,32,.3);margin:16px 0;letter-spacing:.15em;text-transform:uppercase;}
+.price-plan{font-family:'Playfair Display',serif;font-size:2rem;color:var(--burg-mid);font-weight:300;}
+.price-plan-sub{font-size:.72rem;color:rgba(74,8,32,.4);letter-spacing:.1em;margin-bottom:2rem;}
+.inv-includes{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;padding:24px 0;border-top:1px solid rgba(201,149,42,.2);border-bottom:1px solid rgba(201,149,42,.2);margin:1.5rem 0 2rem;}
+.inc-item{text-align:center;}
+.inc-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;color:var(--burg-mid);line-height:1;}
+.inc-label{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(74,8,32,.4);margin-top:3px;}
+.inc-div{width:1px;background:rgba(201,149,42,.2);align-self:stretch;}
+
+/* ABOUT */
+.about{padding:100px 60px;background:var(--burg-deep);position:relative;overflow:hidden;width:100%;}
+.about::before{content:'';position:absolute;top:-300px;right:-200px;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(255,60,130,.25) 0%,rgba(212,53,106,.1) 50%,transparent 70%);filter:blur(20px);}
+.about::after{content:'';position:absolute;bottom:-200px;left:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,138,.2) 0%,transparent 70%);filter:blur(25px);}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:400px 1fr;gap:80px;align-items:center;}
+.about-img{position:relative;}
+.about-img img{width:100%;height:520px;object-fit:cover;object-position:top;border-radius:2px;}
+.about-img::before{content:'';position:absolute;inset:-10px;border:1px solid rgba(201,149,42,.2);border-radius:4px;z-index:-1;}
+.about-img-glow{position:absolute;inset:-60px;background:radial-gradient(ellipse,rgba(255,60,130,.4) 0%,rgba(212,53,106,.15) 50%,transparent 70%);z-index:-2;filter:blur(20px);}
+.about-content h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;color:var(--cream);line-height:1.3;margin-bottom:1.5rem;}
+.about-content p{font-size:.95rem;line-height:1.85;color:rgba(253,248,240,.68);margin-bottom:1.2rem;}
+.about-stats{display:flex;gap:28px;margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(201,149,42,.2);}
+.astat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:600;color:var(--gold-foil);line-height:1;}
+.astat-label{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(253,248,240,.35);margin-top:4px;}
+.astat-div{width:1px;background:rgba(201,149,42,.2);align-self:stretch;}
+
+/* BUNDLE */
+.bundle{background:var(--cream);padding:80px 60px;text-align:center;position:relative;}
+.bundle::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--indigo-glow),transparent);}
+.bundle h3{font-family:'Playfair Display',serif;font-size:2rem;font-weight:300;color:var(--burg-deep);margin-bottom:1rem;}
+.bundle p{font-size:.95rem;color:#5A2030;line-height:1.75;max-width:600px;margin:0 auto 1.5rem;}
+.bundle-price{font-family:'Playfair Display',serif;font-size:2.8rem;color:var(--burg-mid);font-weight:300;margin-bottom:6px;}
+.bundle-save{display:inline-block;background:rgba(107,69,200,.1);border:1px solid rgba(107,69,200,.3);color:var(--indigo);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;border-radius:2px;margin-bottom:2rem;}
+.dfy-note{font-size:.78rem;color:rgba(74,8,32,.4);margin-top:1.5rem;}
+.dfy-note a{color:var(--gold-deep);text-decoration:none;}
+
+/* FINAL CTA */
+.final-cta{padding:140px 60px;text-align:center;background:var(--dark);position:relative;overflow:hidden;width:100%;}
+.final-cta::before{content:'';position:absolute;bottom:-200px;left:50%;transform:translateX(-50%);width:900px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(74,8,32,.7) 0%,transparent 70%);}
+.final-cta-glow-1{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,60,130,.35) 0%,rgba(212,53,106,.15) 50%,transparent 70%);top:-150px;left:-150px;filter:blur(20px);}
+.final-cta-glow-2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,138,.3) 0%,transparent 70%);bottom:-100px;right:-100px;filter:blur(20px);}
+.final-cta-glow-3{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,60,130,.25) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(30px);}
+.final-cta-content{position:relative;z-index:2;max-width:700px;margin:0 auto;}
+.final-cta-content h2{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:300;color:var(--cream);line-height:1.15;margin-bottom:1.5rem;}
+.final-cta-content h2 em{color:var(--gold-foil);font-style:italic;}
+.final-cta-content p{font-size:1rem;color:rgba(253,248,240,.55);line-height:1.8;margin-bottom:2.5rem;}
+.final-cta-fine{font-size:.72rem;color:rgba(253,248,240,.3);letter-spacing:.08em;margin-top:1rem;display:block;}
+
+/* FOOTER */
+footer{padding:36px 60px;border-top:1px solid rgba(201,149,42,.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;background:var(--dark);}
+footer p{font-size:.72rem;color:rgba(253,248,240,.25);letter-spacing:.05em;}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{color:rgba(253,248,240,.25);text-decoration:none;font-size:.72rem;transition:color .2s;}
+.footer-links a:hover{color:var(--gold-foil);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{padding:80px 24px 60px;overflow:hidden;}
+  .hero-glow-1,.hero-glow-2,.hero-glow-3{width:250px;height:250px;}
+  .final-cta-glow-1,.final-cta-glow-2,.final-cta-glow-3{width:200px;height:200px;}
+  .hero-tagline{font-size:1.25rem;}
+  .hero-stats{flex-wrap:wrap;gap:8px;}
+  .hero-stat{padding:0 16px;}
+  .hero-stat-num{font-size:2rem;}
+  .hero-stat-label{font-size:0.7rem;}
+  .hero-fine{font-size:0.82rem;}
+  .proof-bar{padding:24px 24px;}
+  .proof-text{font-size:1.15rem;}
+  .section-cream{padding:60px 24px;}
+  .problem-inner h2{font-size:1.85rem;}
+  .problem-inner p{font-size:1rem;}
+  .problem-quote p{font-size:1.2rem;}
+  .for-who{grid-template-columns:1fr;padding:60px 24px;gap:36px;}
+  .for-who-image img{height:420px;}
+  .for-who-content h2{font-size:1.75rem;}
+  .for-who-list li{font-size:1rem;}
+  .curriculum{padding:60px 24px;}
+  .curriculum-header h2{font-size:1.85rem;}
+  .curriculum-header p{font-size:0.95rem;}
+  .week-header{padding:18px 18px;grid-template-columns:44px 1fr 26px;}
+  .week-title{font-size:1.2rem;}
+  .week-body{padding:0 18px 20px;}
+  .week-body p{font-size:0.95rem;}
+  .how-cream{padding:60px 24px;}
+  .how-cream-inner{grid-template-columns:1fr;}
+  .how-cream h2{font-size:1.75rem;}
+  .how-item p{font-size:0.95rem;}
+  .how-item h4{font-size:1.1rem;}
+  .how-image-wrap{display:none;}
+  .testimonials{padding:60px 24px;}
+  .testimonials-grid{grid-template-columns:1fr;}
+  .testimonials-header h2{font-size:1.75rem;}
+  .t-text{font-size:1.1rem;}
+  .investment{padding:60px 24px;}
+  .investment h2{font-size:1.85rem;}
+  .investment-lead{font-size:1rem;}
+  .inv-card{padding:32px 22px;}
+  .price-main{font-size:4rem;}
+  .price-plan{font-size:1.6rem;}
+  .about{padding:60px 24px;}
+  .about-inner{grid-template-columns:1fr;}
+  .about-content h2{font-size:1.75rem;}
+  .about-content p{font-size:1rem;}
+  .bundle{padding:50px 24px;}
+  .bundle h3{font-size:1.6rem;}
+  .bundle p{font-size:1rem;}
+  .bundle-price{font-size:2.2rem;}
+  .final-cta{padding:80px 24px;}
+  .final-cta-content h2{font-size:2.2rem;}
+  .final-cta-content p{font-size:1rem;}
+  .eyebrow{font-size:0.72rem;}
+  footer{padding:28px;flex-direction:column;text-align:center;}
+  .btn-gold{padding:16px 36px;font-size:0.85rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-overlay"></div>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-glow-3"></div>
+  <div class="hero-content">
+    <img src="logo_text_fixed.png" alt="The Art of Being Known on Substack" class="hero-logo">
+    <p class="hero-tagline">Build the platform that shows the depth of your work<br>and turns readers into clients.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Weeks</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">8</div><div class="hero-stat-label">Live Sessions</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">20</div><div class="hero-stat-label">Spots Only</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" style="font-size:1.6rem;padding-top:6px;">Jun 17</div><div class="hero-stat-label">Starts</div></div>
+    </div>
+    <div class="hero-cta">
+      <a href="https://yourcreativelife.kartra.com/checkout/3acd127e58e6f4973ed00269151995a5" class="btn-gold">Claim Your Spot</a>
+      <p class="hero-fine">$1,500 in full &nbsp;·&nbsp; or two payments of $777</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <p class="proof-text">In my first ten days on Substack I made <strong>$7,200!</strong> And it wasn't from ads, a big launch or a big following I spent years building there. It was from building it right and showing up as exactly who I am.</p>
+</div>
+
+<!-- PROBLEM — CREAM -->
+<section class="section-cream">
+  <div class="problem-inner">
+    <div class="eyebrow">Sound familiar?</div>
+    <h2>You have been pouring <em>real wisdom</em> into platforms that were never built to hold it.</h2>
+    <p>Thoughtful content. Powerful ideas. Deep work that genuinely changes people when they actually encounter it. And no matter how good it is — it disappears. The right clients keep not coming. The message placed in you on purpose keeps getting smaller to fit spaces that were never designed for it.</p>
+    <p>It is not you. It was never you. It was the platform.</p>
+    <div class="problem-quote">
+      <p>Your calling deserves a platform that pays you to show up as exactly who you are. That platform is Substack. And the Art of Being Known is where we build yours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO — DARK -->
+<section style="background:var(--dark);padding:10px 0;">
+  <div class="for-who">
+    <div class="for-who-image">
+      <div class="for-who-image-glow"></div>
+      <img src="lu_anointed.jpg" alt="Lucinda Rae">
+    </div>
+    <div class="for-who-content">
+      <div class="eyebrow">This is for you</div>
+      <h2>The woman who knows exactly what she carries and is ready to build the platform that finally shows it.</h2>
+      <ul class="for-who-list">
+        <li>The coach whose work is too layered for a caption and too important to keep disappearing</li>
+        <li>The author whose book deserves a home before it is even finished</li>
+        <li>The thought leader whose ideas are too big for a fifteen-second reel</li>
+        <li>The creative entrepreneur who has been feeding the algorithm and starving her calling</li>
+        <li>The spiritual visionary who knows what she carries is meant to move people</li>
+      </ul>
+      <div class="not-for">
+        <p>This is not for people still figuring out what they do. This is for the woman who knows exactly what she carries and is ready to build the platform that finally shows it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="curriculum">
+  <div class="curriculum-header reveal">
+    <div class="eyebrow" style="justify-content:center;">The curriculum</div>
+    <h2>Four weeks. Eight sessions. One fully built, fully voiced Substack.</h2>
+    <p>One teaching session and one workshop every week — learn it Tuesday, implement it before Friday. All calls at 1pm PST.</p>
+  </div>
+  <div class="weeks">
+
+    <div class="week-card open reveal">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <div class="week-num">01</div>
+        <div><div class="week-eyebrow">Week 1 · Teaching Session</div><div class="week-title">The Art of Being Unmistakably You</div><div class="week-sub">Identity, Positioning and Your Author Brand</div></div>
+        <div class="week-arrow">↓</div>
+      </div>
+      <div class="week-body">
+        <p>Everything starts here. We uncover your author archetype, develop your brand positioning and get crystal clear on who you are writing for and what your Substack stands for. You leave with your positioning so sharp that your perfect reader finds you and immediately thinks — finally, someone who gets it.</p>
+        <div class="tangibles"><div class="tangibles-label">Your tangibles</div><p>Author archetype assessment completed. Brand positioning statement written. Publication name and tagline finalized.</p></div>
+      </div>
+      <div class="laser-bar"><span>Week 1 · Workshop</span></div>
+      <div class="week-body" style="display:block;">
+        <p>You bring your positioning live. We sharpen it together until it sounds like nobody else on earth. Your About page gets written and goes live this week.</p>
+        <div class="tangibles"><div class="tangibles-label">Your tangibles</div><p>About page published. Bio updated. Positioning locked.</p></div>
+      </div>
+    </div>
+
+    <div class="week-card reveal">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <div class="week-num">02</div>
+        <div><div class="week-eyebrow">Week 2 · Teaching Session</div><div class="week-title">The Art of Your Voice and Your Home</div><div class="week-sub">Voice, Pillars and Full Substack Setup</div></div>
+        <div class="week-arrow">↓</div>
+      </div>
+      <div class="week-body">
+        <p>This is where your Substack gets its heartbeat. We develop your voice — not the one you think you should have but the one you actually have when you are fully present and fully unafraid. Content pillars, tags, header, welcome email — all built with intention.</p>
+        <div class="tangibles"><div class="tangibles-label">Your tangibles</div><p>Content pillars named. Tags set up. Header live. Welcome email written. Full publication setup complete.</p></div>
+      </div>
+      <div class="laser-bar"><span>Week 2 · Workshop</span></div>
+      <div class="week-body">
+        <p>Full live Substack audit. Every element checked, refined and confirmed. You leave with a publication that is complete, polished and ready to grow.</p>
+        <div class="tangibles"><div class="tangibles-label">Your tangibles</div><p>Full audit completed. Welcome email live. Every element confirmed.</p></div>
+      </div>
+    </div>
+
+    <div class="week-card reveal">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <div class="week-num">03</div>
+        <div><div class="week-eyebrow">Week 3 · Teaching Session</div><div class="week-title">The Art of Being Found</div><div class="week-sub">Holy Hot Visibility™ and Your Content Machine</div></div>
+        <div class="week-arrow">↓</div>
+      </div>
+      <div class="week-body">
+        <p>My proprietary Holy Hot Visibility™ method inside a live coaching container. Weekly content rhythm mapped, notes strategy built, growth approach and cross-platform visibility all ready to run without shrinking your soul.</p>
+        <div class="tangibles"><div class="tangibles-label">Your tangibles</div><p>Weekly content rhythm mapped. Notes strategy built. 30-day content calendar created. Cross-platform visibility designed.</p></div>
+      </div>
+      <div class="laser-bar"><span>Week 3 · Workshop</span></div>
+      <div class="week-body">
+        <p>You bring your content plan and first pieces of writing. We review live, refine your voice on the page and personalize your growth strategy to your audience and calling.</p>
+        <div class="tangibles"><div class="tangibles-label">Your tangibles</div><p>Content plan reviewed. First published pieces refined. Growth strategy personalized.</p></div>
+      </div>
+    </div>
+
+    <div class="week-card reveal">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <div class="week-num">04</div>
+        <div><div class="week-eyebrow">Week 4 · Teaching Session</div><div class="week-title">The Art of Getting Paid for Your Calling</div><div class="week-sub">Monetization, Paid Tier and Movement</div></div>
+        <div class="week-arrow">↓</div>
+      </div>
+      <div class="week-body">
+        <p>Your Substack should be paying you now. Not someday. Now. We build your paid tier, map the complete path from free reader to high-ticket client, build your 90-day growth plan and cast the bigger vision of your body of work and movement.</p>
+        <div class="tangibles"><div class="tangibles-label">Your tangibles</div><p>Paid tier set up and live. Customer journey mapped. 90-day growth plan built. Movement vision documented.</p></div>
+      </div>
+      <div class="laser-bar"><span>Week 4 · Workshop</span></div>
+      <div class="week-body">
+        <p>Paid tier reviewed, offer flow confirmed, 90-day plan locked. You leave this program with a Substack that is not just built but actively converting.</p>
+        <div class="tangibles"><div class="tangibles-label">Your tangibles</div><p>Paid tier reviewed. Offer flow confirmed. 90-day plan locked and ready to run.</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS — CREAM -->
+<section class="how-cream">
+  <div class="how-cream-inner">
+    <div>
+      <div class="eyebrow">How it works</div>
+      <h2>Intimate, live, eyes on your actual work throughout.</h2>
+      <ul class="how-list">
+        <li class="how-item"><div class="how-dot"></div><div><h4>Small group on purpose</h4><p>I keep this intentionally intimate so I have real eyes on everyone's work — not just on calls but watching what is going up and giving feedback throughout.</p></div></li>
+        <li class="how-item"><div class="how-dot"></div><div><h4>Live workshop format</h4><p>Every week a teaching session where we go deep and a workshop where we look at your actual Substack live. You bring your work. We work on it together in real time.</p></div></li>
+        <li class="how-item"><div class="how-dot"></div><div><h4>Not a course. Not a template.</h4><p>Real time support from someone who has built this and is building it alongside you right now. Recordings of every session included.</p></div></li>
+        <li class="how-item"><div class="how-dot"></div><div><h4>All calls at 1pm PST</h4><p>Tuesdays for teaching. Fridays for workshops. June 17 through July 25 with intentional skip weeks built in for integration.</p></div></li>
+      </ul>
+    </div>
+    <div class="how-image-wrap reveal">
+      <img src="Laughing_lu.jpg" alt="Lucinda Rae">
+      <div class="how-badge"><div class="how-badge-num">22</div><div class="how-badge-text">Years of brand<br>expertise</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-header reveal">
+    <div class="eyebrow" style="justify-content:center;">What they say</div>
+    <h2>About being in Lucinda's world</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="t-card reveal"><div class="t-stars">★★★★★</div><p class="t-text">"She sees what you carry before you can name it yourself and then she gives you the words."</p><div class="t-name">— Coaching client</div></div>
+    <div class="t-card reveal"><div class="t-stars">★★★★★</div><p class="t-text">"My Substack went from something I was embarrassed about to something I cannot stop sharing. She changed how I see my own work."</p><div class="t-name">— Substack client</div></div>
+    <div class="t-card reveal"><div class="t-stars">★★★★★</div><p class="t-text">"For the first time my business actually sounds like me. All of me. The work, the faith, the creativity — finally together."</p><div class="t-name">— Brand client</div></div>
+  </div>
+</section>
+
+<!-- INVESTMENT — CREAM -->
+<section class="investment">
+  <div class="investment-inner">
+    <div class="eyebrow">The investment</div>
+    <h2>Your calling has waited long enough for a platform worthy of it.</h2>
+    <p class="investment-lead">Four weeks. Eight live sessions. Real eyes on your real Substack throughout. Everything built, live and working by the time we are done.</p>
+    <div class="inv-card reveal">
+      <div class="price-main">$1,500</div>
+      <div class="price-label">Pay in full</div>
+      <div class="price-or">— or —</div>
+      <div class="price-plan">2 × $777</div>
+      <div class="price-plan-sub">Payment plan · both payments within the program</div>
+      <div class="inv-includes">
+        <div class="inc-item"><div class="inc-num">4</div><div class="inc-label">Weeks</div></div>
+        <div class="inc-div"></div>
+        <div class="inc-item"><div class="inc-num">8</div><div class="inc-label">Live Sessions</div></div>
+        <div class="inc-div"></div>
+        <div class="inc-item"><div class="inc-num">20</div><div class="inc-label">Spots max</div></div>
+        <div class="inc-div"></div>
+        <div class="inc-item"><div class="inc-num">∞</div><div class="inc-label">Recordings</div></div>
+      </div>
+      <a href="https://yourcreativelife.kartra.com/checkout/3acd127e58e6f4973ed00269151995a5" class="btn-gold">Yes — Claim My Spot</a>
+      <p style="font-size:.72rem;color:rgba(74,8,32,.4);margin-top:14px;letter-spacing:.05em;">Starts June 17 · 1pm PST Tuesdays and Fridays · Small group</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT — DARK -->
+<section class="about">
+  <div class="about-inner">
+    <div class="about-img reveal">
+      <div class="about-img-glow"></div>
+      <img src="_Lucinda_navy2.jpg" alt="Lucinda Rae">
+    </div>
+    <div class="about-content reveal">
+      <div class="eyebrow">Your guide</div>
+      <h2>Lucinda Rae — Brand Strategist, Substack Builder and Affluent Creator</h2>
+      <p>I spent 22 years helping spiritual creative women build brands and platforms. I watched brilliant coaches and authors pour their genius into spaces that were never built to hold it — and I knew there had to be a better way.</p>
+      <p>Then I got on Substack. In my first ten days I made $7,200 — not from a launch, not from ads, from building it right and showing up as exactly who I am.</p>
+      <p>The gap between the quality of the work and the reach of the platform is not a reflection of the work. It is a structural problem. And structural problems have structural solutions.</p>
+      <div class="about-stats">
+        <div><div class="astat-num">22</div><div class="astat-label">Years experience</div></div>
+        <div class="astat-div"></div>
+        <div><div class="astat-num">$7.2K</div><div class="astat-label">First 10 days</div></div>
+        <div class="astat-div"></div>
+        <div><div class="astat-num">100+</div><div class="astat-label">Brands built</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUNDLE — CREAM -->
+<section class="bundle">
+  <div class="eyebrow" style="justify-content:center;color:var(--indigo);">
+    <span style="width:24px;height:1px;background:var(--indigo);display:inline-block;opacity:.6;"></span>
+    Want more?
+    <span style="width:24px;height:1px;background:var(--indigo);display:inline-block;opacity:.6;"></span>
+  </div>
+  <h3>Add the Substack Brand Suite — both for $2,297</h3>
+  <p>While you learn the art inside the coaching program I build your complete visual identity alongside you. Logo, color palette, Canva templates, header design and graphics kit — all done for you while you build your strategy and voice.</p>
+  <div class="bundle-price">$2,297 bundle</div>
+  <div class="bundle-save">Save $500</div>
+  <br>
+  <a href="https://yourcreativelife.kartra.com/checkout/41007aa7d0e5e40271d280140c048aa8" class="btn-gold">Yes — I Want the Bundle</a>
+  <p class="dfy-note" style="margin-top:2rem;">Want it all built for you without the coaching? <a href="https://secure.hellolucinda.com/fasttrack-your-substack">Fast Track Your Substack →</a></p>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-glow-1"></div>
+  <div class="final-cta-glow-2"></div>
+  <div class="final-cta-glow-3"></div>
+  <div class="final-cta-content">
+    <div class="gold-divider" style="margin-bottom:2.5rem;"></div>
+    <h2>The platform your calling <em>deserves</em> is waiting to be built.</h2>
+    <p>Twenty spots. Starts June 17. This is the year you stop being the best-kept secret in your industry.</p>
+    <a href="https://yourcreativelife.kartra.com/checkout/3acd127e58e6f4973ed00269151995a5" class="btn-gold">I'm Ready — Claim My Spot</a>
+    <span class="final-cta-fine">$1,500 in full &nbsp;·&nbsp; or two payments of $777</span>
+    <div class="gold-divider" style="margin-top:3rem;"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Lucinda Rae &nbsp;·&nbsp; lucindaraestudio.com</p>
+  <div class="footer-links">
+    <a href="https://lucindaraeofficial.substack.com">Substack</a>
+    <a href="https://secure.hellolucinda.com/fasttrack-your-substack">Fast Track DFY</a>
+    <a href="mailto:lucinda@lucindaraestudio.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+function toggleWeek(header){
+  const card=header.closest('.week-card');
+  card.classList.toggle('open');
+}
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
